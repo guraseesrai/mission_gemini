@@ -1,24 +1,35 @@
-Quizzify – AI-powered PDF-to-Quiz Builder 📚➜❓
-Quizzify is a Streamlit application that turns any set of PDF documents into an interactive multiple-choice quiz in just a few clicks.
+# Quizzify – AI-powered PDF-to-Quiz Builder 📚➜❓
 
-How It Works
-Ingest PDFs with task3.py (DocumentProcessor)
+Quizzify is a **Streamlit** application that transforms any collection of PDFs into an interactive multiple-choice quiz in just a few clicks.
 
-Embed text using Google Vertex AI via task4.py (EmbeddingClient)
+---
 
-Index chunks in a local Chroma vector store with task5.py (ChromaCollectionCreator)
+## ✨ Features
+- **Drag-and-drop** multi-PDF ingestion  
+- **On-device** vector search with **ChromaDB** – no external DB required  
+- **Retrieval-augmented** question generation (up to 10 questions per topic)  
+- Quiz navigation with instant feedback & explanations  
+- Modular, testable codebase
 
-Generate questions through retrieval-augmented generation in task8.py (QuizGenerator)
+---
 
-Run the Streamlit UI in task10.py, which handles quiz flow & scoring
+## 🛠️ How It Works
+1. **Ingest PDFs** → `task3.py` (**DocumentProcessor**)  
+2. **Embed text** → `task4.py` (**EmbeddingClient**, Google Vertex AI)  
+3. **Index chunks** → `task5.py` (**ChromaCollectionCreator**)  
+4. **Generate questions** → `task8.py` (**QuizGenerator**, RAG + Gemini-Pro)  
+5. **Run UI & scoring** → `task10.py` (**Streamlit app**)  
 
-✨ Features
-Drag-and-drop multi-PDF ingestion
+---
 
-On-device vector search with ChromaDB – no external DB required
-
-Retrieval-augmented question generation (up to 10 questions per topic)
-
-Session-state navigation, instant correctness feedback & explanations
-
-Modular, testable codebase
+## 📁 Repository Structure
+```text
+.
+├── task3.py   # DocumentProcessor – PDF upload & parsing
+├── task4.py   # EmbeddingClient – Vertex AI text embeddings
+├── task5.py   # ChromaCollectionCreator – vector-store builder
+├── task8.py   # QuizGenerator – RAG + Gemini-Pro
+├── task9.py   # QuizManager – helpers for navigation & state
+├── task10.py  # Main Streamlit app (end-to-end workflow)
+├── requirements.txt
+└── README.md
